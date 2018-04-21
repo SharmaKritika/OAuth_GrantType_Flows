@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Oauth authorization_code flow demo</title>
+  <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+</head>
+<body>
+ 
+<form action="/" id="callApi">
+  <input type="text" name="token" placeholder="Copy access token here..." minlength="50">
+  <br/>
+  <input type="submit" value="Call Api">
+</form>
+<table id="claims">
+</table>
+<!-- the result of the search will be rendered inside this div -->
+<div id="result"></div>
+ 
+<script>
+// Attach a submit handler to the form
+$( "#callApi" ).submit(function( event ) {
+ 
+  // Stop form from submitting normally
+  event.preventDefault();
+ 
+  // Get some values from elements on the page:
+  var $form = $( this ),
+    accessToken = $form.find( "input[name='token']" ).val(),
+    url = 'http://localhost:5001/identity';
+ 
+  // Send the data using get
+  $.ajax({
+      url: url,
+      type: 'GET',
+      beforeSend: function(xhr) {
+          xhr.setRequestHeader('Authorization', 'Bearer '+ accessToken);
+      },
+      success: (function( data ) {
+        $.each(data, function(index, item) {
+            var row = '<tr> <td>' + item["type"] + '</td> <td>' + item["value"] + '</td></tr>';
+            $('#claims').append(row);
+        });
+    })
+  });
+});
+</script>
+ 
+</body>
+</html>
