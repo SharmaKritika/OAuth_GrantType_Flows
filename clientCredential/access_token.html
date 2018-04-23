@@ -2,17 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Oauth authorization_code flow demo</title>
+  <title>Oauth client credential flow demo</title>
   <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
 </head>
 <body>
-
+  <h2>Welcome to Oauth client credential flow demo</h2>
 <p>
   <button type="submit" id="button">Retrieve Access Token</button>
 </p>
 <!-- the result of the search will be rendered inside this div -->
 <div id="result"></div>
  
+<br/><br/>
+<a href="http://localhost:5004/clientcredential/call_api.html" target="_blank">Navigate to Call API page</a>
+
 <script>
 // Attach a submit handler to the form
 $( '#button' ).click(function( event ) {

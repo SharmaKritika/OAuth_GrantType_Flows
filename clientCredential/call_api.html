@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -27,7 +27,7 @@ $( "#callApi" ).submit(function( event ) {
   // Get some values from elements on the page:
   var $form = $( this ),
     accessToken = $form.find( "input[name='token']" ).val(),
-    url = 'http://localhost:5001/identity';
+    url = 'http://localhost:5001/Identity/';
  
   // Send the data using get
   $.ajax({
